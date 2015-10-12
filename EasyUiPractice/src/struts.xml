@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="gbk" />
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="default" namespace="/" extends="json-default">
+		<action name="user" class="com.bbs.action.UserAction">
+			<result type="json">
+				<param name="root">jsonObj</param>
+			</result>
+		</action>
+		<action name="dg" class="com.bbs.action.DataGridAction">
+
+		</action>
+		<action name="staff" class="com.bbs.action.StaffAction">
+			<interceptor-ref name="defaultStack">
+				<param name="modelDriven.refreshModelBeforeResult">true</param>
+			</interceptor-ref>
+			<result type="json">
+				<param name="root">jsonObj</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- Add packages here -->
+
+</struts>
